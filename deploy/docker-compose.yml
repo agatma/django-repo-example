@@ -1,0 +1,16 @@
+x-service-base: &service-base
+  image: registry.gitlab.com/company/example-app:${EXAMPLE_APP_VERSION:-latest}
+  restart: unless-stopped
+  env_file:
+    - .gen.env
+  build:
+    context: .
+    dockerfile: ./deploy/app/Dockerfile
+
+services:
+  example-app:
+    <<: *service-base
+    container_name: example-app
+    command: bash /app/start-django-gunicorn.sh
+    ports:
+      - "8042:8042"

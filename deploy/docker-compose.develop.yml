@@ -1,0 +1,7 @@
+services:
+  example-app:
+    command: bash /app/start-django-dev.sh
+    environment:
+      - DEBUG=1
+    volumes:
+      - ".:/app/src"

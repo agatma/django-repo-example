@@ -1,0 +1,8 @@
+services:
+  example-app-tests:
+    image: registry.gitlab.com/example/example-app:latest
+    volumes:
+      - ".:/app/src"
+    command: bash /app/start-tests.sh
+    depends_on:
+      - example-database

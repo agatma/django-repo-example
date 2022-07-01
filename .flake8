@@ -1,0 +1,32 @@
+[flake8]
+doctests = False
+
+exclude =
+  __pycache__,
+  ; migrations are mostly auto-generated, so we do not want to impose rules on them
+  migrations,
+  */alembic/versions/*,
+  ; GPB auto-generates some code that does not need linter checks
+  *_pb2.py
+
+ignore =
+  ; Missing docstrings
+  DJ,
+  ; Line break occurred before a binary operator; contradicts with W504 and PEP8 allows both, so we do not enforce it
+  W503,
+  ; Line break occurred after a binary operator; contradicts with W503 and PEP8 allows both, so we do not enforce it
+  W504,
+
+max-complexity = 10
+max-line-length = 119
+max-linenumber = 1000
+
+per-file-ignores =
+  fwone_common/filters/ag_grid/__init__.py:F401
+  fwone_common/filters/ag_grid/filters/__init__.py:F401
+  fwone_common/utils/__init__.py:F401
+  fwone_filesets/tests/test_fileset_view_set.py:L001
+  # fwone_clients/serializers/devices/data_validator.py:C901
+  fwone_clients/tests/test_serializers_import_placeholders.py:L001
+  fwone_clients/tests/test_views_import_devices.py:L001
+  fwone_filesets/tests/test_configuration_view.py:W191, E101

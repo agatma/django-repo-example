@@ -1,0 +1,11 @@
+[run]
+omit =
+    */.local/*
+    */.cache/*
+    */tests/*
+    */cached_venv/*
+    conftest.py
+    */metrics/*
+
+[report]
+precision = 2

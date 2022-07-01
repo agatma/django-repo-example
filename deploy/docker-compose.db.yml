@@ -1,0 +1,19 @@
+services:
+  example-app:
+    depends_on:
+      - example-database
+
+  example-database:
+    image: postgres:14
+    restart: unless-stopped
+    container_name: example-database
+    environment:
+      - POSTGRES_USER=example
+      - POSTGRES_PASSWORD=qwerty
+    ports:
+      - 5432
+    volumes:
+      - "${EXAMPLE_DB_VOLUME:-db-volume}:/var/lib/postgresql/data"
+
+volumes:
+  db-volume:
