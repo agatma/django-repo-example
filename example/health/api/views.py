@@ -31,8 +31,7 @@ class HealthView(APIView):
 
     def get(self, request) -> Response:
         """Returns information about application health."""
-        errors = self.check_all()
-        if errors:
+        if errors := self.check_all():
             raise ServiceHealthCheckError(detail=errors)
 
         return Response('ok')
